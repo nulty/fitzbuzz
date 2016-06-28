@@ -50,8 +50,11 @@
             <tr>
               <td><%= fb.number %></td>
               <td><%= fb.value %></td>
-              <td><button></td>
+              <td><a class="btn btn-default">Favourite?</a></td>
             </tr>
           <% end %>
+          <div>
+            <%= will_paginate @fizzbuzzs, renderer: BootstrapPagination::Rails %>
+          </div>
         </table>
       </div>
