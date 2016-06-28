@@ -24,7 +24,7 @@ class HomepageController < ApplicationController
     {
       total_entries: FizzBuzz::LIMIT,
       page: params[:page],
-      per_page: params[:per_page]
+      per_page: params[:per_page] || 100
     }
   end
 end
