@@ -2,6 +2,9 @@ class FizzBuzz < ActiveRecord::Base
   require 'fizzbuzz_script'
   FizzBuzz::LIMIT = 1_000_000_000
 
+  has_many :users_fizz_buzzs
+  has_many :users, through: :users_fizz_buzzs
+
   def self.select_or_create_by_numbers(numbers)
     numbers = Array(numbers)
     existing = where(number: numbers)
