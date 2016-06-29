@@ -1,4 +1,6 @@
 class UserCreateForm < Reform::Form
+  model :user
+
   property :username
   property :password
 

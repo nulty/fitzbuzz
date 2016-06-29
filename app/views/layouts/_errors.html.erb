@@ -1,0 +1,16 @@
+<div id="error_container" class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="well">
+        <h3>Please correct the errors below:</h3>
+        <table class="table">
+          <% errors.each do |message| %>
+            <tr>
+              <p><%= message %></p>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

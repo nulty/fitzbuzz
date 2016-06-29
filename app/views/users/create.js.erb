@@ -1,0 +1,6 @@
+<% if @user_form.errors.any? %>
+
+  <% html = j(render partial: 'layouts/errors', locals: { errors: @user_form.errors.full_messages }).html_safe %>
+  $("#error_container").remove()
+  $('.page-header').after("<%= html %>")
+<% end %>
