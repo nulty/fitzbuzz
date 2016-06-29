@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users_fizz_buzzs, only: [:create, :destroy], param: :fizz_buzz_id
+
   resource :sessions, only: [:create, :destroy]
 
   resources :users, only: [:new, :create]
