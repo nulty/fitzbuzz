@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # respond_to :js
   def new
     @user_form = UserCreateForm.new(User.new)
   end
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
     if valid_form?
       @user_form.save
 
-      flash[:notice] = 'Welcome to the app!'
+      flash[:notice] = 'Welcome!'
       return render js: "window.location='#{root_url}'"
     end
   end

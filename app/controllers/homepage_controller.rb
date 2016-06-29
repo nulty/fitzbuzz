@@ -1,5 +1,6 @@
 class HomepageController < ApplicationController
   def show
+    # @user_form = UserCreateForm.new(User.new)
     @fizzbuzzs = FizzBuzz.paginate(pagination_options)
     prepare_fizzbuzzs
   end
