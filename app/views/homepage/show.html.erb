@@ -22,7 +22,13 @@
           <td><%= fb.number %></td>
           <td><%= fb.value %></td>
           <% if current_user %>
-          <td><a class="btn btn-default">Favourite?</a></td>
+          <td>
+            <% if current_user.fizz_buzzs.include?(fb) %>
+              <%= link_to 'Unfavourite?', users_fizz_buzz_path(fb.id), method: :delete, class: 'btn btn-danger' %>
+            <% else %>
+              <%= button_to 'Favourite?', users_fizz_buzzs_path, params: {fizz_buzz_id: fb.id}, class: 'btn btn-default' %>
+            <% end %>
+          </td>
           <% end %>
         </tr>
       <% end %>
