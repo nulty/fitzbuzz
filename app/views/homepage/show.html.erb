@@ -12,10 +12,17 @@
   <!-- Example row of columns -->
   <div class="row">
     <h1>All the FizzBuzzes!</h1>
+    <div class="pull-right col-xs-2">
+      <%= label_tag :per_page %>
+      <%= select_tag :per_page, options_for_select(page_options, per_page_pref), class: 'form-control per_page' %>
+    </div>
     <table class="table">
     <tr>
       <th>number</th>
       <th>value</th>
+      <% if current_user %>
+        <th>Save Favourite</th>
+      <% end %>
     </tr>
       <% @fizzbuzzs.each do |fb| %>
         <tr>
@@ -32,7 +39,7 @@
           <% end %>
         </tr>
       <% end %>
-      <div>
+      <div class="col-xs-8">
         <%= will_paginate @fizzbuzzs, renderer: BootstrapPagination::Rails %>
       </div>
     </table>

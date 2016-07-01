@@ -1,6 +1,6 @@
 class HomepageController < ApplicationController
+  before_action :set_per_page
   def show
-    # @user_form = UserCreateForm.new(User.new)
     @fizzbuzzs = FizzBuzz.paginate(pagination_options)
     prepare_fizzbuzzs
   end
@@ -25,7 +25,13 @@ class HomepageController < ApplicationController
     {
       total_entries: FizzBuzz::LIMIT,
       page: params[:page],
-      per_page: params[:per_page] || 100
+      per_page: session.fetch('per_page') { 100 }
     }
+  end
+
+  def set_per_page
+    return if session[:per_page] == params[:per_page]
+
+    session.update(per_page: params[:per_page])
   end
 end
