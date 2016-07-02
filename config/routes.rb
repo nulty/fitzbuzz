@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Fitzbuzz::V1::Base => '/'
   resources :users_fizz_buzzs, only: [:create, :destroy], param: :fizz_buzz_id
 
   resource :sessions, only: [:create, :destroy]
