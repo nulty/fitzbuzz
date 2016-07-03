@@ -30,6 +30,29 @@ module Fitzbuzz
         end
       end
 
+      resource :users do
+        get '/' do
+          per_page = (params[:per_page] || WillPaginate.per_page).to_i
+          page = (params[:page] || 1).to_i
+
+          users = ::User.paginate(page: page, per_page: per_page)
+
+          present users, with: Fitzbuzz::V1::User
+        end
+
+        get '/:username' do
+          user = ::User.find_by(username: params[:username])
+
+          present user, with: Fitzbuzz::V1::User
+        end
+
+        get '/:username/favourites' do
+          user = ::User.find_by(username: params[:username])
+          favourites = user.fizz_buzzs
+          present favourites, with: Fitzbuzz::V1::FizzBuzz
+        end
+      end
+
       add_swagger_documentation hide_format: true, api_version: 'api/v1'
     end
   end
