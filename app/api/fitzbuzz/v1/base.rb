@@ -12,7 +12,8 @@ module Fitzbuzz
       resource :fizzbuzzs do
         get '/' do
           per_page = (params[:per_page] || WillPaginate.per_page).to_i
-          page = (params[:page] || 1).to_i
+          page = (params[:page] || 0).to_i
+          page -= 1
 
           lower = (per_page*page)
           higher = (per_page*page) + per_page
@@ -45,8 +46,10 @@ module Fitzbuzz
 
           present user, with: Fitzbuzz::V1::User
         end
+      end
 
-        get '/:username/favourites' do
+      resource :favourites do
+        get '/:username' do
           user = ::User.find_by(username: params[:username])
           favourites = user.fizz_buzzs
           present favourites, with: Fitzbuzz::V1::FizzBuzz
