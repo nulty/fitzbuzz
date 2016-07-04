@@ -18,4 +18,17 @@ PostgreSQL datastore
 
  - Configure your postgres database in config/database.yml
  - start 
-$ rails s
+`$ rails s`
+
+## Testing
+tests are written in RSpec
+
+run `rspec` to run the tests
+
+## Submission
+
+The API is not complete. 
+ - authentication is missing
+ - post requests have not been implemented
+
+The API is not tested yet. Some difficulties in dependencies meant that this has not been done.
